@@ -1,0 +1,27 @@
+---
+import type { Playlist } from "@/lib/dataGosht";
+
+interface Props {
+  playlist: Playlist;
+}
+
+const { playlist } = Astro.props;
+const { id, cover, title, artists, color } = playlist;
+
+const artistsString = artists.join(", ")
+---
+
+
+<a 
+href={`/playlist/${id}`}
+class="playlist-item flex relative p-2 overflow-hidden items-center gap-4 rounded-md hover:bg-zinc-500"
+>
+    <picture class="h-12 w-12 flex-none">
+        <img 
+       src={cover}
+       alt={`Nombre de la canción ${title} por ${artistsString}`} 
+       class="object-cover w-full h-full rounded-md"
+        />
+        </picture>
+    </picture>
+</a>
