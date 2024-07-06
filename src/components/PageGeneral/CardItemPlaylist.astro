@@ -1,5 +1,5 @@
 ---
-import type { Playlist } from "@/lib/dataGosht";
+import { type Playlist } from "@/lib/dataGosht";
 
 interface Props {
   playlist: Playlist;
@@ -13,15 +13,17 @@ const artistsString = artists.join(", ");
 
 <a
   href={`/playlist/${id}`}
-  class="playlist-item flex relative p-2 overflow-hidden items-center gap-4 rounded-md hover:bg-zinc-800">
-  <picture class="h-12 w-12 flex-none">
+  class="playlist-item transition-all duration-300 flex relative p-2 overflow-hidden gap-2 pb-2 rounded-md hover:bg-zinc-800 shadow-lg hover:shadow-xl bg-zinc-500/30 w-44 flex-col"
+  transition:name=`playlist ${id} box`>
+  <picture class="aspect-square w-full h-auto flex-none">
     <img
       src={cover}
       alt={`Nombre de la canción ${title} por ${artistsString}`}
       class="object-cover w-full h-full rounded-md"
+      transition:name=`playlist ${id} image`
     />
   </picture>
-  <div class="flex flex-auto flex-col truncate">
+  <div class="flex flex-auto flex-col px-2 truncate">
     <h4 class="text-white text-sm">{title}</h4>
 
     <span class="text-xs text-gray-400">

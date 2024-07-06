@@ -9,14 +9,17 @@
         "@/components": [
             "src/components/*"
         ],
-        "@icons": [
+        "@/icons": [
             "src/icons/*"
         ],
-        "@fonts": [
+        "@/fonts": [
             "src/fonts/*"
         ],
-        "@lib": [
+        "@/lib": [
             "src/lib/*"
+        ],
+        "@/layouts": [
+            "src/layouts/*"
         ],
     }
 }

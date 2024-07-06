@@ -28,12 +28,8 @@ import { playlists } from "@/lib/dataGosht";
         <LibraryIcon />
         Tu biblioteca
       </SideMenuItem>
-     
-      {
-        playlists.map(playlist => <SideMenuCard  playlist={playlist} />) 
-      }
+
+      {playlists.map((playlist) => <SideMenuCard playlist={playlist} />)}
     </ul>
   </div>
-
-  
 </nav>
