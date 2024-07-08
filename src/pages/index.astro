@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import Greeting from "@/components/PageGeneral/Greeting.svelte";
 import { playlists } from "@/lib/dataGosht";
 import CardItemPlaylist from "@/components/PageGeneral/CardItemPlaylist.astro";
 ---
@@ -12,7 +12,7 @@ import CardItemPlaylist from "@/components/PageGeneral/CardItemPlaylist.astro";
     <!-- <PageHeader /> -->
 
     <div class="relative z-10 px-6 pt-10">
-      <!-- <Greeting /> -->
+      <Greeting />
       <div class="flex flex-wrap mt-6 gap-4">
         {playlists.map((playlist) => <CardItemPlaylist playlist={playlist} />)}
       </div>
