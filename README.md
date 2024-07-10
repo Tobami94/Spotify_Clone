@@ -1,22 +1,16 @@
 # Notas: SpotyClone
 
-
-| Tools                     |                                                  |
-| :------------------------ | :----------------------------------------------- |
-| `Astro, React, Js, TW`    | Installs dependencies                            |
-|                           |                                                  |
-|                           |                                                  |
-|                           |                                                  |
-|                           |                                                  |
-|                           |                                                  |
-
-
-
+| Tools                  |                       |
+| :--------------------- | :-------------------- |
+| `Astro, React, Js, TW` | Installs dependencies |
+|                        |                       |
+|                        |                       |
+|                        |                       |
+|                        |                       |
+|                        |                       |
 
 Reproductor: Componente "Player.jsx"
-a)  Utiliza Transitions View. 
-
-
+a) Utiliza Transitions View.
 
 ## 👀 Want to learn more?
 
