@@ -9,7 +9,8 @@
 |                        |                       |
 |                        |                       |
 
-Reproductor: Componente "Player.jsx"
+Reproductor: Componente 
+"Playerjsx"                                                                                                                                                               
 a) Utiliza Transitions View.
 
 ## 👀 Want to learn more?
