@@ -1,8 +1,8 @@
-import { Pause, Play } from "./Player";
-import { usePlayerStore } from "../../store/storePlayer";
+import { Pause, Play } from "./../Reproductor/Player"
+import { usePlayerStore } from '../../store/storePlayer'
 
-export function ButtonPlay({ id, size = "small" }) {
-  const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
+export function MusicAlbumButtonPlay ({ id, size = 'small' }) {
+    const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
     usePlayerStore((state) => state);
 
   const isPlayingPlaylist = isPlaying && currentMusic?.playlist?.id === id;

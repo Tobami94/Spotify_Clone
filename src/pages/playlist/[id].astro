@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro"
-
+import MusicAlbum from "@/components/MusicAlbum/MusicAlbum.astro";
+import { MusicAlbumButtonPlay } from "../../components/MusicAlbum/MusicAlbumButtonPlay"
 import { allPlaylists, songs } from "../../lib/dataGosht"
 
 
@@ -53,14 +54,18 @@ const playListSongs = songs.filter(
       </div>
     </header>
 
-    <div class="relative z-10 px-6 pt-10">
-        <!-- <Greeting /> -->
-
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-10">
-      </div>
+    <div class="pl-6 pt-6">
+      <MusicAlbumButtonPlay client:load id={id} size="large" />
     </div>
-  </div>
+    <div class="relative z-10 px-6 pt-10"></div>
 
-  <style></style>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"
+    >
+    </div>
+
+    <section class="p-6">
+      <MusicAlbum songs={playListSongs} />
+    </section>
+  </div>
 </Layout>

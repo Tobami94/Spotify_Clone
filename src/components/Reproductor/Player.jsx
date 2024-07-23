@@ -88,49 +88,59 @@ const CurrentMusicActual = ({ image, title, artists }) => {
   );
 };
 
-const AlbumControl = ({audio}) => {
-  const [currentTime, setCurrentTime] = useState(0)
+const AlbumControl = ({ audio }) => {
+  const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    audio.current.addEventListener('timeupdate', handleTimeUpdate)
+    audio.current.addEventListener("timeupdate", handleTimeUpdate);
     return () => {
-      audio.current.removeEventListener('timeupdate', handleTimeUpdate)
-    }
-  }, [])
+      audio.current.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, []);
 
   const handleTimeUpdate = () => {
-    setCurrentTime(audio.current.currentTime)
-  }
+    setCurrentTime(audio.current.currentTime);
+  };
 
   const resetTime = (time) => {
-if (time === null) return '0:00'
+    if (time === null) return `00:00`;
 
-const seconds = Math.floor(time % 60)
-  }
+    const seconds = Math.floor(time % 60);
+    const minutes = Math.floor(time / 60);
 
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`; //cual es la longitud que tiene que tener el string min.
+  };
 
-  const duration = audio?.current?.duration ?? 0
+  const duration = audio?.current?.duration ?? 0;
 
   return (
-    <div className="flex gap-x-5 text-xs">
-
-      <span className="opacity-50">{currentTime}</span>
+    <div className="flex gap-x-3 text-xs pt-2">
+      {duration ? (
+        <span className="opacity-50 w-12 text-right">
+          {resetTime(currentTime)}
+        </span>
+      ) : (
+        <span className="opacity-50">--:--</span>
+      )}
 
       <Slider
-defaultValue={[0]}
-value={[currentTime]}
-max={audio?.current?.duration ?? 0}
-min={0}
-className="w-[500px]"
-onValueChange={(value) => {
-  audio.current.currentTime = value
-}}
+        defaultValue={[0]}
+        value={[currentTime]}
+        max={audio?.current?.duration ?? 0}
+        min={0}
+        className="w-[500px]"
+        onValueChange={(value) => {
+          audio.current.currentTime = value;
+        }}
       />
-      <span className="opacity-50">{duration}</span>
-
+      {duration ? (
+        <span className="opacity-50">{resetTime(duration)}</span>
+      ) : (
+        <span className="opacity-50">--:--</span>
+      )}
     </div>
-  )
-}
+  );
+};
 
 const VolumeControl = () => {
   const volume = usePlayerStore((state) => state.volume);
@@ -219,7 +229,7 @@ export function Player() {
   };
 
   return (
-    <div className="flex flex-row justify-between w-full px-4 z-50">
+    <div className="flex flex-row justify-between w-full px-1 z-50">
       <div className="w-[200px]">
         <CurrentMusicActual {...currentMusic.song} />
       </div>
@@ -237,7 +247,6 @@ export function Player() {
       <div className="grid place-content-center">
         <VolumeControl />
       </div>
-
     </div>
   );
 }
