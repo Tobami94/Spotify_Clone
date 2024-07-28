@@ -92,32 +92,33 @@ const AlbumControl = ({ audio }) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.current.currentTime);
+    };
+
     audio.current.addEventListener("timeupdate", handleTimeUpdate);
     return () => {
       audio.current.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, []);
 
-  const handleTimeUpdate = () => {
-    setCurrentTime(audio.current.currentTime);
-  };
-
-  const resetTime = (time) => {
+  const formatTime = (time) => { //esta funcion convierte un tiempo en segundos
     if (time === null) return `00:00`;
 
     const seconds = Math.floor(time % 60);
     const minutes = Math.floor(time / 60);
 
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`; //cual es la longitud que tiene que tener el string min.
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   const duration = audio?.current?.duration ?? 0;
+  const remainingTime = duration - currentTime; //restamos el currentTime de la duración
 
   return (
     <div className="flex gap-x-3 text-xs pt-2">
       {duration ? (
         <span className="opacity-50 w-12 text-right">
-          {resetTime(currentTime)}
+          {formatTime(currentTime)}
         </span>
       ) : (
         <span className="opacity-50">--:--</span>
@@ -134,7 +135,9 @@ const AlbumControl = ({ audio }) => {
         }}
       />
       {duration ? (
-        <span className="opacity-50">{resetTime(duration)}</span>
+        <span className="opacity-50 w-12 text-right">
+          {formatTime(remainingTime)}
+        </span>
       ) : (
         <span className="opacity-50">--:--</span>
       )}

@@ -1,8 +1,8 @@
-import { Pause, Play } from "./../Reproductor/Player"
-import { usePlayerStore } from '../../store/storePlayer'
+import { Pause, Play } from "./../Reproductor/Player";
+import { usePlayerStore } from "../../store/storePlayer";
 
-export function MusicAlbumButtonPlay ({ id, size = 'small' }) {
-    const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
+export function MusicAlbumButtonPlay({ id, size = "small" }) {
+  const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
     usePlayerStore((state) => state);
 
   const isPlayingPlaylist = isPlaying && currentMusic?.playlist?.id === id;
@@ -13,7 +13,7 @@ export function MusicAlbumButtonPlay ({ id, size = 'small' }) {
       return;
     }
 
-    fetch(`api/get-info-playlist.json?id=${id}`) //ruta del servidor
+    fetch(`/api/get-info-playlist.json?id=${id}`) //ruta del servidor
       .then((res) => res.json())
       .then((data) => {
         const { songs, playlist } = data;
